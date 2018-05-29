@@ -1,2 +1,14 @@
 # avito_kaggle_baseline
-The baseline solution (1062 NCCU WSM final project)
+
+## Prepare your data
+
+Download dataset from [kaggle](https://www.kaggle.com/c/avito-demand-prediction/data)
+
+## Dependencies
+`numpy`, `scipy`, `scikit-learn`, `xgboost`, `nltk`
+
+## Run
+
+```
+python3 baseline.py train.csv test.csv
+```
