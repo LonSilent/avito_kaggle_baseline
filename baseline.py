@@ -11,13 +11,10 @@ from math import log10, sqrt
 import datetime
 import sys
 
+# const
 train_path = sys.argv[1]
 test_path = sys.argv[2]
-
-# const
 enable_col = ['region', 'city', 'parent_category_name', 'category_name', 'user_type', 'price']
-# train_path = '/tmp2/bschang/avito_kaggle_18/train.csv'
-# test_path = '/tmp2/bschang/avito_kaggle_18/test.csv'
 stop = stopwords.words('russian') + stopwords.words('english')
 is_valid = False
 
@@ -135,6 +132,8 @@ print("test features shape:", test_features.shape)
 print("Training xgb...")
 model = xgboost.XGBRegressor(max_depth=20, n_jobs=4, n_estimators=100)
 
+# validation: train with first 80% train_data and predict with remain 20% 
+# useful when add features and hyper-parameter tuning
 if is_valid:
     train_percent = 0.8
     train_fold_index = np.where(label[:int(len(label) * train_percent)])
@@ -150,11 +149,14 @@ if is_valid:
     valid_pred = model.predict(X_test)
     score = sqrt(mean_squared_error(Y_test, valid_pred))
     print("validation score:", score)
+    # end program
     exit()
 
+# fit with all train instances
 model.fit(train_features, label, eval_metric='rmse')
 
 prob_result = model.predict(test_features)
+# make sure all probability 0 <= p <= 1
 for i, prob in enumerate(prob_result):
     if prob >= 1.0:
         prob_result[i] = 1.0
