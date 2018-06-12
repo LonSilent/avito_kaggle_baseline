@@ -26,6 +26,12 @@ python3 add_image_pred.py train.csv test.csv image_pred/
 
 You can run our preprocessing code like below:
 ```
-python3 image_feature.py train_jpg0/
 python3 image_label_pred.py train_jpg0/ train0.pickle
+```
+
+## Image Quality
+
+We are now extracting the features based on this [solution](https://www.kaggle.com/shivamb/ideas-for-image-features-and-image-quality). We will inform you when it is done, and give you a link for downloding the extracted results. You can also test it via following comment:
+```
+python3 image_feature.py train_jpg0/
 ```
