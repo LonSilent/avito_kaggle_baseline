@@ -21,6 +21,7 @@ We are now extracting the features based on this [solution](https://www.kaggle.c
 ```
 python3 image_feature.py train_jpg0/
 ```
+UPDATE: You can download the extracted features from [here](https://drive.google.com/file/d/1nV1ftxIbd31fk0uzcyTWXvgCXjHrwCf-/view?usp=sharing).
 
 #### Image Prediction
 
